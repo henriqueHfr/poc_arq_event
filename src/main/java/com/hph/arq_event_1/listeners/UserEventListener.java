@@ -1,5 +1,6 @@
-package com.hph.arq_event_1.service;
+package com.hph.arq_event_1.listeners;
 
+import com.hph.arq_event_1.events.UserCreateEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 

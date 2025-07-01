@@ -1,7 +1,9 @@
 package com.hph.arq_event_1.controller;
 
+import com.hph.arq_event_1.events.RegisterCreateEvent;
+import com.hph.arq_event_1.models.RegisterModel;
 import com.hph.arq_event_1.models.UserModel;
-import com.hph.arq_event_1.service.UserCreateEvent;
+import com.hph.arq_event_1.events.UserCreateEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.http.ResponseEntity;
@@ -18,13 +20,14 @@ public class UserController {
 
 
      @PostMapping("/register/")
-     public ResponseEntity<String> registerUser(@RequestBody UserModel user) {
-         publisher.publishEvent(new UserCreateEvent(this, user));
+     public ResponseEntity<String> registerUser(@RequestBody RegisterModel user) {
+         publisher.publishEvent(new RegisterCreateEvent(this, user));
          return ResponseEntity.ok("User registered successfully");
      }
 
      @PostMapping("/login/")
      public ResponseEntity<String> loginUser(@RequestBody UserModel user) {
+         publisher.publishEvent(new UserCreateEvent(this, user));
          return ResponseEntity.ok("User logged in successfully");
      }
 }

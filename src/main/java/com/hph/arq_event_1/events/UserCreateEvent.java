@@ -1,4 +1,4 @@
-package com.hph.arq_event_1.service;
+package com.hph.arq_event_1.events;
 
 import com.hph.arq_event_1.models.UserModel;
 import org.springframework.context.ApplicationEvent;
